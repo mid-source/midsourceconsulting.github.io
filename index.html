@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MidSource Consulting - Experience. Expertise. Excellence.</title>
+    <title>MidSource Consulting - Professional Business Solutions</title>
     <style>
         * {
             margin: 0;
@@ -12,23 +12,11 @@
         }
 
         body {
-            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-
-        /* Header Styles */
-        header {
             background: linear-gradient(135deg, #8FD3A4 0%, #7BC3E8 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 100vh;
         }
 
         .container {
@@ -37,424 +25,688 @@
             padding: 0 20px;
         }
 
-        .header-content {
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-badge {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #8FD3A4 0%, #7BC3E8 100%);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
-
-        .logo-text {
             font-size: 1.8rem;
-            font-weight: 900;
-            color: #2c3e50;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .company-name {
-            font-size: 2rem;
-            font-weight: 800;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            color: white;
+            font-weight: bold;
+            color: #7BC3E8;
             text-decoration: none;
-            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
             transition: all 0.3s ease;
-            padding: 10px 15px;
+            position: relative;
+            padding: 0.5rem 1rem;
             border-radius: 25px;
         }
 
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
+        .nav-links a:hover, .nav-links a.active {
+            background: linear-gradient(135deg, #8FD3A4, #7BC3E8);
+            color: white;
             transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .page {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding: 3rem 0;
+        }
+
+        .page.active {
+            display: block;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 150px 0 100px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #8FD3A4 0%, #7BC3E8 100%);
-            opacity: 0.9;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 2rem 0;
+            color: white;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 40px;
-            opacity: 0.95;
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         .cta-button {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
+            background: linear-gradient(135deg, #8FD3A4, #7BC3E8);
             color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+            padding: 1rem 2rem;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(143, 211, 164, 0.4);
         }
 
         .cta-button:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(143, 211, 164, 0.6);
         }
 
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background: white;
+        /* Content Cards */
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 60px;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #8FD3A4 0%, #7BC3E8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .content-card:hover {
+            transform: translateY(-5px);
         }
 
+        .content-card h2 {
+            color: #7BC3E8;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .content-card h3 {
+            color: #8FD3A4;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
         .service-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #8FD3A4 0%, #7BC3E8 100%);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            font-weight: 900;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: #2c3e50;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
             font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #8FD3A4 0%, #7BC3E8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 1rem;
         }
 
-        .stat-label {
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #2c3e50;
-            margin-top: 10px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7BC3E8;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #8FD3A4, #7BC3E8);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(143, 211, 164, 0.6);
         }
 
         /* Footer */
         footer {
-            background: #2c3e50;
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 60px 0 30px;
             text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #8FD3A4;
-        }
-
-        .footer-section p, .footer-section a {
-            color: #bdc3c7;
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: #7BC3E8;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #34495e;
-            padding-top: 20px;
-            margin-top: 40px;
-            color: #95a5a6;
+            padding: 2rem 0;
+            margin-top: 3rem;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header-content {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.95);
                 flex-direction: column;
-                gap: 20px;
+                justify-content: start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
-            .tagline {
-                font-size: 1.2rem;
-            }
-
-            .about-content {
+            .services-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-badge">
-                        <div class="logo-text">MS</div>
-                    </div>
-                    <div class="company-name">MidSource</div>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
+        <nav class="container">
+            <a href="#" class="logo">MidSource Consulting</a>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="portfolio">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>MidSource Consulting</h1>
-                <p class="tagline">Experience. Expertise. Excellence.</p>
-                <a href="#contact" class="cta-button">Get Started Today</a>
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h1>Welcome to MidSource Consulting</h1>
+                <p>Premier IT consulting, software development, and quality assurance solutions across multiple business domains</p>
+                <a href="#" class="cta-button nav-link" data-page="contact">Get Started Today</a>
             </div>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">E</div>
-                    <h3>Expert Consultation</h3>
-                    <p>Leverage our extensive experience to solve your most challenging business problems with innovative solutions.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">S</div>
-                    <h3>Strategic Planning</h3>
-                    <p>Develop comprehensive strategies that align with your business goals and drive sustainable growth.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">I</div>
-                    <h3>Implementation</h3>
-                    <p>Turn strategies into action with our proven implementation methodologies and ongoing support.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About MidSource</h2>
-                    <p>At MidSource Consulting, we bring together unparalleled experience, deep expertise, and a commitment to excellence in everything we do.</p>
-                    <p>Our team of seasoned professionals has helped hundreds of organizations achieve their goals through strategic consulting, innovative solutions, and dedicated support.</p>
-                    <p>We believe in building lasting partnerships with our clients, understanding their unique challenges, and delivering results that exceed expectations.</p>
-                </div>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Projects</div>
+            
+            <div class="content-card">
+                <h2>Your Trusted IT Partner Since 2019</h2>
+                <p>MidSource Consulting is a leading IT services company based in Kochi, Kerala, India. We specialize in delivering comprehensive software testing, development, and quality assurance solutions. Our dedicated team of highly skilled engineers partners with both national and international clients to deliver exceptional results that exceed expectations.</p>
+                
+                <h3>What We Offer</h3>
+                <div class="services-grid" style="margin: 2rem 0;">
+                    <div class="service-card">
+                        <div class="service-icon">🧪</div>
+                        <h4>Software Testing</h4>
+                        <p>Comprehensive QA services including functional, non-functional, and automation testing across web and mobile platforms.</p>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Years</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Success Rate</div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h4>Software Development</h4>
+                        <p>Full-stack web and mobile application development using modern technologies and frameworks.</p>
                     </div>
                 </div>
+                
+                <h3>Why Choose MidSource?</h3>
+                <ul>
+                    <li>Expert team with proven track record since 2019</li>
+                    <li>Customized automation frameworks and solutions</li>
+                    <li>Cost-effective services with regular on-time deliverables</li>
+                    <li>Enhanced performance and quality assurance</li>
+                    <li>Commitment to treating clients as true partners</li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer id="contact">
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="content-card">
+                <h2>About MidSource Consulting</h2>
+                <p>MidSource Consulting began its journey in October 2019 as an innovative IT startup company in Kochi, Kerala, India. What started as a vision to offer language-agnostic full software testing services across multiple platforms and technologies has evolved into a comprehensive IT solutions provider.</p>
+                
+                <p>Today, we are proud to be a team of highly skilled engineers, partnering with both national and international clients to deliver exceptional quality assurance and development services. Our growth reflects our commitment to excellence and our ability to adapt to the ever-changing technological landscape.</p>
+                
+                <h3>Our Mission</h3>
+                <p>To provide world-class IT consulting, software development, and quality assurance solutions that help businesses achieve their digital transformation goals while maintaining the highest standards of quality and customer satisfaction.</p>
+                
+                <h3>Our Vision</h3>
+                <p>To be the preferred IT partner for businesses worldwide, known for our technical expertise, innovative solutions, and unwavering commitment to client success.</p>
+                
+                <h3>Our Commitment</h3>
+                <p>At MidSource, we understand the changing customer needs and are committed to providing an ever-increasing level of customer satisfaction by offering high-quality deliverables. We treat our clients as true partners, working diligently to provide optimal services that contribute to our partners' overall growth.</p>
+                
+                <h3>Our Journey</h3>
+                <p>With a rich history in developing E-commerce Solutions, Website Design, and Application Development, we have been instrumental in helping businesses streamline their operations with remarkable efficiency. Our QA team specializes in finding deficiencies in software, websites, and mobile applications before they reach end-users, ensuring pristine digital offerings that result in minimal complaints and maximum user satisfaction.</p>
+            </div>
+        </section>
+
+        <!-- Services Page -->
+        <section id="services" class="page">
+            <div class="content-card">
+                <h2>Our Services</h2>
+                <p>We provide comprehensive IT consulting, software development, testing, and quality assurance solutions across multiple business domains. Our team ensures your applications are tested thoroughly, delivered on-time, and within budget.</p>
+            </div>
+            
+            <!-- Software Testing Section -->
+            <div class="content-card">
+                <h2>Software Testing</h2>
+                <p>Our dedicated team of QA Engineers specializes in full-cycle QA services, web/mobile applications, automation, performance, and services testing.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Functional Testing</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li>System Testing</li>
+                            <li>Integration Testing</li>
+                            <li>Regression Testing</li>
+                            <li>Acceptance Testing</li>
+                            <li>UI/UX Testing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Non-Functional Testing</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li>Performance Testing</li>
+                            <li>Load Testing</li>
+                            <li>Stress Testing</li>
+                            <li>Usability Testing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3>Automation Testing</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li>Selenium Java/C#</li>
+                            <li>Cucumber BDD</li>
+                            <li>UFT & Playwright</li>
+                            <li>TestNG & JUnit</li>
+                            <li>Web & Mobile Automation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🔒</div>
+                        <h3>Specialized Testing</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li>API & Services Testing</li>
+                            <li>Security Testing</li>
+                            <li>Mobile App Testing (Android/iOS)</li>
+                            <li>Cross Browser Testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Software Development Section -->
+            <div class="content-card">
+                <h2>Software Development</h2>
+                <p>From simple website design to complex e-commerce platforms and cross-platform mobile applications, we provide end-to-end software development solutions.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3>Web Development</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li>WordPress Development</li>
+                            <li>React JS Applications</li>
+                            <li>Java Enterprise Solutions</li>
+                            <li>.NET Applications</li>
+                            <li>Custom Web Solutions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Mobile App Development</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li>Android Development</li>
+                            <li>iOS Development</li>
+                            <li>Flutter Applications</li>
+                            <li>React Native Apps</li>
+                            <li>Cross-Platform Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Our Approach Section -->
+            <div class="content-card">
+                <h2>Our Approach</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                    <div>
+                        <h3>Collaborative Process</h3>
+                        <p>We work directly with your team to create end-to-end processes and testing solutions that help you achieve desired quality outcomes.</p>
+                    </div>
+                    
+                    <div>
+                        <h3>Adaptive Methodology</h3>
+                        <p>We use both proactive and reactive techniques based on the context, project needs, and methodologies followed by the client.</p>
+                    </div>
+                    
+                    <div>
+                        <h3>Comprehensive Support</h3>
+                        <p>We guide clients through each stage of design, development, testing, launch, training sessions, and post-launch support.</p>
+                    </div>
+                    
+                    <div>
+                        <h3>Early Detection</h3>
+                        <p>Our approach is strategized to identify defects as early as possible in the development life cycle, minimizing costs and risks.</p>
+                    </div>
+                </div>
+                
+                <p><strong>Complete Testing Lifecycle:</strong> From test plan preparation and test case creation to test execution, defect tracking, test risk analysis, and automation - we handle everything and provide regular updates at different stages and cycles of the testing process.</p>
+            </div>
+        </section>
+
+        <!-- Portfolio Page -->
+        <section id="portfolio" class="page">
+            <div class="content-card">
+                <h2>Why Choose MidSource?</h2>
+                <p>With a proven track record since 2019, we combine technical expertise with industry best practices to deliver exceptional results for our clients worldwide.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">👥</div>
+                        <h3>Expert Team</h3>
+                        <p>Highly skilled engineers with deep expertise in testing, development, and quality assurance across multiple technologies and platforms.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>Customized Solutions</h3>
+                        <p>Tailored automation frameworks and testing solutions designed specifically for your project requirements and technology stack.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Enhanced Performance</h3>
+                        <p>Optimized testing processes and development practices that improve application performance and user experience.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">💰</div>
+                        <h3>Cost Effective</h3>
+                        <p>Competitive pricing with maximum value delivery, helping you achieve quality goals within your budget constraints.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">📅</div>
+                        <h3>On-Time Delivery</h3>
+                        <p>Regular deliverables and consistent communication ensure your projects stay on track and meet deadlines.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🤝</div>
+                        <h3>Partnership Approach</h3>
+                        <p>We treat clients as true partners, working collaboratively to ensure long-term success and mutual growth.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2>Our Expertise</h2>
+                <p>With extensive experience in developing E-commerce Solutions, Website Design, and Application Development, we have helped numerous businesses streamline their operations with remarkable efficiency.</p>
+                
+                <h3>Quality Assurance Excellence</h3>
+                <p>Our specialized QA team excels in identifying deficiencies in software, websites, and mobile applications before they reach end-users. This proactive approach ensures that your digital offerings maintain the highest quality standards, resulting in minimal user complaints and maximum customer satisfaction.</p>
+                
+                <h3>Technology Expertise</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                    <div>
+                        <h4>Testing Technologies</h4>
+                        <ul>
+                            <li>Selenium WebDriver</li>
+                            <li>TestNG & JUnit</li>
+                            <li>Cucumber BDD</li>
+                            <li>Playwright & UFT</li>
+                            <li>API Testing Tools</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4>Development Stack</h4>
+                        <ul>
+                            <li>React JS & React Native</li>
+                            <li>Java & .NET</li>
+                            <li>Flutter & Android/iOS</li>
+                            <li>WordPress & CMS</li>
+                            <li>Database Technologies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Client Success Stories</h3>
+                <blockquote style="font-style: italic; margin: 1rem 0; padding: 1rem; border-left: 4px solid #7BC3E8;">
+                    "MidSource Consulting transformed our QA process completely. Their automation framework reduced our testing time by 60% while improving test coverage significantly."
+                </blockquote>
+                
+                <blockquote style="font-style: italic; margin: 1rem 0; padding: 1rem; border-left: 4px solid #7BC3E8;">
+                    "Working with MidSource has been exceptional. Their team's expertise in mobile app testing helped us launch a bug-free application that received excellent user reviews."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="content-card">
+                <h2>Contact Us</h2>
+                <p>Ready to transform your business? Get in touch with our expert team to discuss your needs and explore how we can help you achieve your goals.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                    <div>
+                        <h3>Get in Touch</h3>
+                        <p><strong>Email:</strong> info@midsourceconsulting.com</p>
+                        <p><strong>Phone:</strong> +91 (484) 123-4567</p>
+                        <p><strong>Address:</strong> Kochi, Kerala, India</p>
+                        
+                        <h3 style="margin-top: 2rem;">Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM IST</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM IST</p>
+                        <p>Sunday: Closed</p>
+                        
+                        <h3 style="margin-top: 2rem;">Services Available</h3>
+                        <p>✓ Software Testing & QA</p>
+                        <p>✓ Web & Mobile Development</p>
+                        <p>✓ Automation Framework Development</p>
+                        <p>✓ Performance & Security Testing</p>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: info@midsourceconsulting.com</p>
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Address: 123 Business Ave, Suite 100</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <p><a href="#">Business Consulting</a></p>
-                    <p><a href="#">Strategic Planning</a></p>
-                    <p><a href="#">Implementation Support</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Company</h3>
-                    <p><a href="#">About Us</a></p>
-                    <p><a href="#">Our Team</a></p>
-                    <p><a href="#">Careers</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 MidSource Consulting. All rights reserved.</p>
-            </div>
+            <p>&copy; 2024 MidSource Consulting. All rights reserved. | Kochi, Kerala, India</p>
         </div>
     </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const hamburger = document.querySelector('.hamburger');
+            const navLinksContainer = document.querySelector('.nav-links');
+
+            // Page navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and pages
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    pages.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding page
+                    const targetPage = this.getAttribute('data-page');
+                    const targetElement = document.getElementById(targetPage);
+                    if (targetElement) {
+                        targetElement.classList.add('active');
+                    }
+                    
+                    // Close mobile menu
+                    navLinksContainer.classList.remove('active');
+                });
+            });
+
+            // Mobile menu toggle
+            hamburger.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+
+            // Form submission
+            const form = document.querySelector('.contact-form form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                form.reset();
+            });
+
+            // Smooth scrolling for mobile
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
